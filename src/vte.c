@@ -4393,8 +4393,10 @@ skip_chunk:
 			}
 			/* Add the cells over which we have moved to the region
 			 * which we need to refresh for the user. */
+			/* If previous cell in the same position was wide character,
+			 * we need to invalidate one more cell. */
 			bbox_bottomright.x = MAX(bbox_bottomright.x,
-					screen->cursor_current.col);
+					screen->cursor_current.col + 1);
 			/* cursor_current.row + 1 (defer until inv.) */
 			bbox_bottomright.y = MAX(bbox_bottomright.y,
 					screen->cursor_current.row);
